@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="file">
+	<update id="addDownCount" parameterType="int">
+		UPDATE board_file 
+		SET downCount=downCount+1 
+		WHERE num=#{num}
+	</update>
+	
+	<select id="getData" parameterType="int" resultType="test.file.dto.FileDto">
+		SELECT num,writer,title,orgFileName,saveFileName,fileSize,downCount,
+			   TO_CHAR(regdate, 'yyyy/mm/dd am hh:mm:ss') regdate
+		FROM   board_file
+		WHERE  num=#{num}
+	</select>
+	
+	<insert id="insert" parameterType="fileDto">
+		INSERT INTO board_file
+		(num, writer, title, orgFileName, saveFileName, fileSize, regdate)
+		VALUES(board_file_seq.NEXTVAL, #{writer}, #{title}, #{orgFileName}, #{saveFileName}, #{fileSize}, SYSDATE)
+	</insert>
+	
+	<delete id="delete" parameterType="int">
+		DELETE 
+		FROM board_file
+		WHERE num=#{num}
+	</delete>
+	<!-- fileDto => Configuration.xml에 정의된 <typeAliases>  -->
+	<select id="getList" parameterType="test.file.dto.FileDto" resultType="fileDto">
+		SELECT *
+		FROM (
+				SELECT result1.*, ROWNUM AS rnum
+				  FROM (
+						SELECT num,writer,title,orgFileName,saveFileName,fileSize,downCount,
+					   		   TO_CHAR(regdate, 'YYYY.MM.DD AM HH:MI') AS regdate
+						FROM   board_file
+						ORDER BY num DESC
+						) result1
+			  ) result2 
+		WHERE rnum BETWEEN #{startRowNum} AND #{endRowNum}
+		ORDER BY rnum
+	</select>
+	
+	<select id="getCount" resultType="int">
+		SELECT NVL(MAX(ROWNUM),0) cnt
+		FROM   board_file
+	</select>
+</mapper>

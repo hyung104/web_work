@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cafeRecommend">
+	<insert id="insert" parameterType="recommendDto">
+		INSERT INTO board_recommend
+			(num, recommender, regdate)
+		VALUES (#{num}, #{recommender}, SYSDATE)
+	</insert>
+	<select id="getData" parameterType="recommendDto" resultType="int">
+		SELECT num
+		FROM   board_recommend
+		WHERE  num=#{num}
+		AND    recommender=#{recommender}	
+	</select>
+</mapper>

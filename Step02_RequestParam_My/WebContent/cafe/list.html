@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>list.html</title>
+<!-- bootstrap.css를 로딩시켜 보세요. -->
+<link rel="stylesheet" href="../css/bootstrap.css" />
+</head>
+<body>
+<div class="container">
+	<h3>카페 글 목록입니다.</h3>
+	<table calss="table table-bordered">
+		<thead>
+			<tr>
+				<th>글번호</th>
+				<th>제목</th>
+				<th>작성일</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td>1</td>
+<!-- detail -> 상대 경로이므로, cafe/list.html있으므로, cafe/detail을 의미함. -->				
+				<td><a href="detail?num=1">어쩌구..</a></td>
+				<td>어제</td>
+			</tr>
+			<tr>
+				<td>2</td>
+				<td><a href="detail?num=2">저쩌구..</a></td>
+				<td>오늘</td>
+			</tr>
+			<tr>
+				<td>3</td>
+				<td><a href="detail?num=3">궁짝궁짝..</a></td>
+				<td>내일</td>
+			</tr>			
+		</tbody>
+	</table>
+</div>	
+</body>
+</html>

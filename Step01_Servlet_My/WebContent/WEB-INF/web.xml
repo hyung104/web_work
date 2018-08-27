@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" version="3.1">
+  <display-name>Step01_Servlet_My</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  <!-- 서블릿 정의하기 -->
+  <servlet>
+  	<servlet-name>showTimeServlet</servlet-name>
+  	<servlet-class>test.servlet.ShowTimeServlet</servlet-class>
+  </servlet>
+  <!-- 서블릿 맵핑하기 -->
+  <servlet-mapping>
+  	<servlet-name>showTimeServlet</servlet-name>
+  	<url-pattern>/showtime</url-pattern>
+  </servlet-mapping>
+  
+  <!-- showFortuneServlet 정의하기  -->
+  <servlet>
+  	<servlet-name>showFortuneServlet</servlet-name>
+  	<servlet-class>test.servlet.ShowFortuneServlet</servlet-class>
+  </servlet>  
+  <!-- showFortuneServlet 매핑하기  -->
+  <servlet-mapping>
+  	<servlet-name>showFortuneServlet</servlet-name>
+  	<url-pattern>/showfortune</url-pattern>
+  </servlet-mapping>
+  
+  <!-- myServlet 이라는 이름의 서블릿 정의하기 -->
+  <servlet>
+  	<servlet-name>myServlet</servlet-name>
+  	<servlet-class>test.servlet.MyServlet</servlet-class>
+  </servlet>
+  <!-- myServlet 맵핑하기(어떤요청에 대해서 myServlet 을 사용할지) -->
+  <servlet-mapping>
+  	<servlet-name>myServlet</servlet-name>
+  	<url-pattern>*.do</url-pattern>
+  </servlet-mapping>
+  
+  <!-- greetServlet 정의하기 -->
+  <servlet>
+  	<servlet-name>greetServlet</servlet-name>
+  	<servlet-class>test.servlet.GreetServlet</servlet-class>
+  </servlet>  
+  <!-- greetServlet 매핑하기 -->
+  <servlet-mapping>
+  	<servlet-name>greetServlet</servlet-name>
+  	<url-pattern>/sub/greet</url-pattern>
+  </servlet-mapping>  
+</web-app>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
